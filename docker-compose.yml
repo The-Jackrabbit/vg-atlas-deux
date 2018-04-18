@@ -1,0 +1,47 @@
+version: "2"
+services:
+  models:
+    image: "node:8"
+    user: "node"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./models:/app
+    ports:
+    - "8001:8000"
+    command: >
+          bash -c "cd ./app
+          && npm install
+          && npm start"
+
+  exp:
+    image: "node:8"
+    user: "node"
+    environment:
+      - NODE_ENV=production
+    links:
+      - models:models-api
+    volumes:
+      - ./experience:/app
+    ports:
+    - "8002:8000"
+    command: >
+          bash -c "cd ./app
+          && npm install
+          && npm start"
+
+  frontend:
+    image: "node:8"
+    user: "node"
+    environment:
+      - NODE_ENV=production
+    links:
+      - exp:exp-api
+    volumes:
+      - ./frontend:/app
+    ports:
+    - "8003:3000"
+    command: >
+          bash -c "cd ./app
+          && npm install
+          && npm start"

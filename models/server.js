@@ -3,7 +3,8 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
-let db = require('./config/db');
+const dbConfig = require('./config/db');
+const routes = require('./app/routes');
 
 const app = express();
 
@@ -13,16 +14,18 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 
-MongoClient.connect(db.url, (err, database) => {
+MongoClient.connect(dbConfig.url, (err, database) => {
 	if (err) {
 		return console.log(err);
 	}
 
-	db = database.db('vg-atlas');
-	require('./app/routes')(app, db);
+	const db = database.db('vg-atlas');
+	
+	routes(app, db);
 
 	app.listen(port, () => {
-		console.log('Serving out of port ' + port);
+		console.log('Serving out of local port ' + port);
+		console.log('Serving out of on host machine port 8001');
 	});
 
 });
