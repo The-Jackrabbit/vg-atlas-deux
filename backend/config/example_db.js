@@ -1,3 +1,3 @@
 module.exports = {
-	url: '//<dbuser>:<dbpassword>@ds141889.mlab.com:41889/vg-atlas',
+	url: 'mongodb://<dbuser>:<dbpassword>@ds249299.mlab.com:49299/vg-atlas',
 };
