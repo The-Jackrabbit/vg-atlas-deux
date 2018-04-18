@@ -18,7 +18,7 @@ MongoClient.connect(db.url, (err, database) => {
 		return console.log(err);
 	}
 
-	db = database.db('inside-uva');
+	db = database.db('vg-atlas');
 	require('./app/routes')(app, db);
 
 	app.listen(port, () => {

@@ -25,9 +25,9 @@ module.exports = function(app, db) {
 		db.collection(collection).find({}).toArray((err, result) => {
 			if (err) {
 				res.send({
-					'error': 'An Error Has Occurred',
+					error: 'An Error Has Occurred',
+					report: err,
 				});
-				next();
 			} else {
 				res.send(result);
 			}
