@@ -1,0 +1,47 @@
+/* Layout */
+.nav-container {
+	border-bottom: 1pt solid #9B9BA0;
+}
+.nav {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "links logo login";
+	
+	padding: 6pt 12pt;
+	margin: auto;
+}
+.nav .links, .nav .logo, .nav .login {
+	margin: auto 0;
+}
+.nav a {
+	color: #9B9BA0;
+}
+.nav .links {
+	grid-area: links;
+	text-align: start;
+}
+	.nav .links a {
+		margin-right: 24pt;
+	}
+	.nav .links a:hover {
+		color: #ED254E;
+	}
+.nav .logo {
+	grid-area: logo;
+	text-align: center;
+}
+.nav .login {
+	grid-area: login;
+	text-align: end;
+	position: relative;
+}
+
+/* Specialized Elements */
+.nav .login span {
+	color: #9B9BA0;
+	cursor: pointer;
+}
+.login span {
+	position: relative;
+	display: inline-block;
+}

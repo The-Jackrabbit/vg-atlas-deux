@@ -1,0 +1,23 @@
+
+.form-input {
+	padding: 8pt;
+}
+
+.form-inputs input, .form-inputs button, .form-inputs p, .form-inputs div, .form-inputs select {
+	font-family:  Arial, Helvetica, sans-serif !important;
+}
+
+input:focus, select:focus {
+	outline-width: 0;
+}
+.signup-form input {
+	width: 100%;
+	border: none;
+}
+
+.signup-form input::placeholder {
+	color: #9b9b9b;
+	font-size: 14pt;
+	font-weight: 200;
+	letter-spacing: 1.2pt;
+}

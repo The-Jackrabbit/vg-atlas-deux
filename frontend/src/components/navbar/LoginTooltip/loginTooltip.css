@@ -1,0 +1,24 @@
+#login-card {
+	position: absolute;
+	z-index: 1;
+	text-align: start;
+	border-radius: 4pt;
+	border: 1px solid lightgray;
+	width: 180pt;
+	box-shadow: 1pt 1pt 3pt lightgray;
+	background-color: white;
+	right: 0;
+	transform: translateY(10pt);
+	padding: 12pt;
+	
+	box-sizing: border-box;
+}
+
+.login-section {
+	border-bottom: 1pt solid lightgray;
+}
+.login-section,
+.login-section > *,
+.signup-section > * {
+	margin-bottom: 8pt;
+}

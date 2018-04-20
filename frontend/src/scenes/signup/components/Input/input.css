@@ -1,0 +1,43 @@
+.grid {
+	display: grid;
+}
+
+.input.grid {
+	height: 50pt;
+}
+input:focus {
+	outline-width: 0;
+}
+.input {
+	grid-template-columns: min-content min-content;
+	grid-template-areas: 'inputContainer errorMessage'
+}
+.error-message {
+	grid-area: errorMessage
+}
+.input-container {
+	grid-area: inputContainer; 
+	background-color: white;
+	width: 300pt;
+	height: 30pt;
+	padding: 10pt;
+	grid-template-columns: 1fr min-content;
+	grid-template-areas: 'input statusIcon';
+}
+
+.input-area {
+	grid-area: input;
+	align-self: center;
+}
+.status-icon-area {
+	grid-area: statusIcon;
+	align-self: center;
+}
+
+
+.input-container label {
+	display: block;
+	font-weight: 200;
+	font-size: 10pt;
+	color: #9b9b9b;
+}

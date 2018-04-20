@@ -1,0 +1,13 @@
+/* Layout */
+
+.page-signup .page-contents {
+	display: grid;
+	grid-template-columns: 1fr 10fr 1fr;
+	grid-template-areas:
+	". signupForm .";
+}
+.signup-form {
+	grid-area: signupForm;
+	width: 340pt;
+	margin: auto;
+}
