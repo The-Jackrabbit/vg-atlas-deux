@@ -6,6 +6,9 @@ import logo from '../../assets/logo.svg';
 import loginCaret from '../../assets/loginCaret.svg';
 // Components
 import { Link } from 'react-router-dom';
+import { push } from 'react-router-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import LoginTooltip from './LoginTooltip/loginTooltip';
 
 const propTypes = {
@@ -13,7 +16,7 @@ const propTypes = {
 };
 const defaultProps = {
 	links: [
-		{label: 'Home', link: '/home/'},
+		{label: 'Home', link: '/'},
 		{label: 'Games', link: '/games/'},
 		{label: 'Library', link: '/library/'},
 	],
@@ -77,7 +80,7 @@ class Navbar extends Component {
 			<div className="nav-container">
 				<div className="nav">
 					<div className="links">
-						<Link to="/home/">Home</Link>
+						<Link to="/">Home</Link>
 						<Link to="/games/">Games</Link>
 						<Link to="/library/">Library</Link>
 					</div>
@@ -110,4 +113,11 @@ class Navbar extends Component {
 Navbar.propTypes = propTypes;
 Navbar.defaultProps = defaultProps;
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+	changePage: (link) => push(link)
+}, dispatch);
+
+export default connect(
+	null, 
+	mapDispatchToProps
+)(Navbar);

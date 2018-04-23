@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import Input from './Input/input';
 import Submit from './Submit/submit';
 import './signupForm.css';
-import Select from './Select/select';
 import PropTypes from 'prop-types';
-
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';//dispatch
 import states from './Select/data/states';
+
+import * as actionTypes from '../../../redux/actions/signupPageActions';
 
 let propTypes = {
 	statesData: PropTypes.array,
 	finishSignup: PropTypes.func.isRequired,
+	username: PropTypes.string.isRequired,
+	// redux dispatchers
+	updateUsername: PropTypes.func.isRequired,
+	updateEmail: PropTypes.func.isRequired,
+	updatePassword: PropTypes.func.isRequired,
+	updatePasswordConfirm: PropTypes.func.isRequired,
 };
 
 let defaultProps = {
@@ -61,6 +70,8 @@ export class SignupForm extends Component {
 	}
 
 	handleFormInput(event, context) {
+
+		this.props.updateUsername(event.target.value);
 		this.setState({
 			inputValues: {
 				...this.state.inputValues,
@@ -171,6 +182,8 @@ export class SignupForm extends Component {
 		const andAllReducer = (previous, currentTest) => previous&&currentTest;
 		let isSubmittable = Object.values(this.state.inputValidity).reduce(andAllReducer);
 		if (isSubmittable) {
+			this.props.updateUsername(this.state.inputValues.username);
+			this.props.updateEmail(this.state.inputValues.email);
 			const url = 'http://localhost:8002/signup';
 			fetch(url, {
 				body: JSON.stringify(this.state.inputValues), // must match 'Content-Type' header
@@ -200,6 +213,7 @@ export class SignupForm extends Component {
 	render() {
 		return (
 			<div className='form-inputs signup-form'>
+				<h1>{this.props.username}</h1>
 				<Input 
 					context='username'
 					name='Username'
@@ -254,4 +268,36 @@ export class SignupForm extends Component {
 SignupForm.propTypes = propTypes;
 SignupForm.defaultProps = defaultProps;
 
-export default SignupForm;
+const mapStateToProps = (state) => {
+	return {
+		username: state.signupPage.username
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateUsername: (input) => {
+			console.log('updating username from actions');
+			dispatch({
+				type: actionTypes.UPDATE_USERNAME,
+				payload: input,
+			});
+		},
+		updateEmail: (input) => dispatch({
+			type: actionTypes.UPDATE_EMAIL,
+			payload: input,
+		}),
+		updatePassword: (input) => dispatch({
+			type: actionTypes.UPDATE_PASSWORD,
+			payload: input,
+		}),
+		updatePasswordConfirm: (input) => dispatch({
+			type: actionTypes.UPDATE_CONFIRM_PASSWORD,
+			payload: input,
+		}),
+	};
+};
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(SignupForm);

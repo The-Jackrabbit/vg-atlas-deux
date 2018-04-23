@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './scenes/home/home';
+import Games from './scenes/games/games';
 import Signup from './scenes/signup/signup';
 import SignupConfirmation from './scenes/signupConfirmation/signupConfirmation';
 
@@ -27,6 +28,7 @@ class App extends Component {
 			<Router>
 				<div style={{minHeight: '100vh'}}>
 					<Route exact path="/" component={Home} />
+					<Route path="/games/" component={Games} />
 					<Route path="/signup/" component={Signup} />
 					<Route path="/signupConfirmation/" component={SignupConfirmation} />
 				</div>

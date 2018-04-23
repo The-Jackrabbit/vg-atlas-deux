@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import PropTypes from 'prop-types';
 import Navbar from '../../components/navbar/navbar';
 import SignupForm from './components/signupForm';
+
 import './signup.css';
 
+const propTypes = {
+	
+};
 
 class Signup extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			signupCompleted: false,
@@ -15,7 +20,11 @@ class Signup extends Component {
 
 		this.finishSignup = this.finishSignup.bind(this);
 	}
-
+	componentDidMount() {
+		console.log({
+			props: this.props,
+		});
+	}
 	finishSignup() {
 		this.setState({signupCompleted: true});
 	}
@@ -36,6 +45,9 @@ class Signup extends Component {
 		return(<Redirect to="/signupConfirmation"/>);
 	}
 }
+
+Signup.propTypes = propTypes;
+
 
 
 export default Signup;
