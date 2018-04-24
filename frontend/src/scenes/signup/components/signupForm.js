@@ -13,12 +13,13 @@ import * as actionTypes from '../../../redux/actions/signupPageActions';
 let propTypes = {
 	statesData: PropTypes.array,
 	finishSignup: PropTypes.func.isRequired,
-	username: PropTypes.string.isRequired,
+	
 	// redux dispatchers
 	updateUsername: PropTypes.func.isRequired,
 	updateEmail: PropTypes.func.isRequired,
 	updatePassword: PropTypes.func.isRequired,
 	updatePasswordConfirm: PropTypes.func.isRequired,
+	username: PropTypes.string.isRequired,
 };
 
 let defaultProps = {
@@ -213,7 +214,6 @@ export class SignupForm extends Component {
 	render() {
 		return (
 			<div className='form-inputs signup-form'>
-				<h1>{this.props.username}</h1>
 				<Input 
 					context='username'
 					name='Username'

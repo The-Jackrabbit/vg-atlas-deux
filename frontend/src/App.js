@@ -1,40 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+// Pages
 import Home from './scenes/home/home';
 import Games from './scenes/games/games';
+import Library from './scenes/library/library';
 import Signup from './scenes/signup/signup';
+import NotFoundPage from './scenes/notFound/notFoundPage';
 import SignupConfirmation from './scenes/signupConfirmation/signupConfirmation';
 
-import {
-	BrowserRouter as Router,
-	Route
-} from 'react-router-dom';
+import Navbar from './components/side-navbar/navbar';
 
-class App extends Component {
-	constructor() {
-		super();
-
-		this.state = {
-			data: {
-				username: 'james',
-				email: 'james@bg.com',
-				password: '12345',
-			},
-		};
-
-	}
-
-	render() {
-		return (
-			<Router>
-				<div style={{minHeight: '100vh'}}>
-					<Route exact path="/" component={Home} />
-					<Route path="/games/" component={Games} />
-					<Route path="/signup/" component={Signup} />
-					<Route path="/signupConfirmation/" component={SignupConfirmation} />
-				</div>
-			</Router>
-		);
-	}
-}
+const App = () => {
+	return (
+		<div className='viewport-container'>
+			<div className='navbar-container'>
+				<Navbar></Navbar>
+			</div>
+			<div className='body-container' style={{minHeight: '100vh'}}>
+				<Switch>
+					<Route exact path="/" component={Home}/>
+					<Route exact path="/games/" component={Games} />
+					<Route exact path="/library/" component={Library} />
+					<Route exact path="/signup/" component={Signup}/>
+					<Route exact path="/signupConfirmation/" component={SignupConfirmation}/>
+					<Route path="/" component={NotFoundPage} />
+				</Switch>
+			</div>
+		</div>
+		
+	);
+};
 
 export default App;

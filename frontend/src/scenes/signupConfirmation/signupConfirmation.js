@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import Navbar from '../../components/navbar/navbar';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
@@ -15,7 +13,6 @@ const propTypes = {
 const SignupConfirmation = (props) => {
 	return(
 		<div className="page-signup-confirmation page">
-			<Navbar></Navbar>
 			<div className="page-contents">
 				<h2>Welcome to the club kiddo!</h2>
 				<p>{props.username}</p>

@@ -1,34 +1,28 @@
-
-/* Palette
-	Red: ED254E
-	Blue 0094FF
-		Light Blue: #2CA6FD
-		Medium blue: #0094FF
-		Dark blue: #007FDB
-	White
-		Light white: #FFFFFF
-		Medium White: #F9F9F9
-		Dark White: #F0F0F0
-	Black
-		Light Black: #1E1E21
-		Medium Black: #141414
-		Dark Black: #070600
-	Gray
-		Light Gray: #DEDEE5
-		Medium Gray: #BEBEC4
-		Dark Gray: #9B9BA0
-	
-	Velvety Red: AA1155
-*/
-
 body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
 }
+.viewport-container {
+	display: grid;
+	grid-template-areas: 'navContainer bodyContainer';
+	grid-template-columns: min-content 1fr;
+
+}
+.navbar-container {
+	grid-area: navContainer;
+	background-color: #141414;
+	margin: atuo;
+	width: 60px;
+}
+.body-container {
+	grid-area: bodyContainer;
+}
+#root {
+	background-color: #242424;
+}
 .page-contents {
-	background-color: #F0F0F0;
-	min-height: 95vh;
+	min-height: calc(100vh - 50px);
 }
 /* Custom Elements */
 
@@ -223,6 +217,7 @@ input::placeholder {
 div, p, input, a, h1, h2, h3, h4, h5, h6, li, ul, button {
 	font-family: Arial, Helvetica, sans-serif !important;
 	margin: 0pt;
+	color: #f0f0f0;
 }
 
 a {

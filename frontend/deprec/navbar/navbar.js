@@ -41,6 +41,10 @@ class Navbar extends Component {
 		document.addEventListener('click', this.handleDocumentClick, false);
 	}  
 
+	componentWillUnmount() {
+		document.removeEventListener('click', this.handleDocumentClick, false);
+	}
+
 	handleDocumentClick() {
 		if (!this.state.mouseOverTooltip) {
 			this.setState({
@@ -109,6 +113,7 @@ class Navbar extends Component {
 		);
 	}
 }
+
 
 Navbar.propTypes = propTypes;
 Navbar.defaultProps = defaultProps;

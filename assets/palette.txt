@@ -1,0 +1,39 @@
+Main:
+	Red:
+		Lightest: #FF325B
+		Lighter: #FF1947
+		Primary: #FF0033
+		Darker: #E5002D
+		Darkest: #CC0028
+
+Secondary:
+	Blue:
+		Primary: #2CA6FD
+		Darker: #0094FF
+		Darkest: #007FDB
+	Yellow:
+		Primary: #FFD951
+		Darker: #FFD232
+		Darkest: #FFC700
+	Green:
+		Primary: #44E57A
+		Darker: #40D672
+		Darkest: #3BC66A
+	Purple:
+		Primary: #CA60FF
+		Darker: #B657E5
+		Darkest: #A14DCC
+
+Grayscale:
+	Black:
+		Dark: #141414 
+		Medium: #343434 
+		Light: #4C4C4C 
+	Gray:
+		Dark: #666666 
+		Medium: #7F7F7F 
+		Light: #999999 
+	White:
+		Dark: #BCBCBC 
+		Medium: #E0E0E0 
+		Light: #FFFFFF 

@@ -1,6 +1,6 @@
 /* Layout */
 .nav-container {
-	border-bottom: 1pt solid #9B9BA0;
+	background-color: #FFFFFF;
 }
 .nav {
 	display: grid;

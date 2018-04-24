@@ -9,19 +9,21 @@ let propTypes = {
 };
 
 
-const Games = (props) => {
+const Library = (props) => {
 	return (
 		<div className="page-home page">
-			<h1>games</h1>
+			<div className="page-contents">
+				<h1>library</h1>
+			</div>
 		</div>
 	);
 };
 
-Games.propTypes = propTypes;
+Library.propTypes = propTypes;
 
 const mapStateToProps = (state) => {
 	return {
-
+		
 	};
 };
 
@@ -34,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Games);
+)(Library);

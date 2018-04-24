@@ -1,0 +1,8 @@
+.page-404 .page-contents {
+	display: grid;
+	grid-template-areas: 'message';
+}
+.page-404 .message {
+	grid-area: message;
+	margin: auto;
+}

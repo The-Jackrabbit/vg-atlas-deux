@@ -8,7 +8,7 @@ services:
     volumes:
       - ./models:/app
     ports:
-    - "8001:8000"
+    - "3001:8000"
     command: >
           bash -c "cd ./app
           && npm install
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./experience:/app
     ports:
-    - "8002:8000"
+    - "3002:8000"
     command: >
           bash -c "cd ./app
           && npm install
@@ -40,7 +40,7 @@ services:
     volumes:
       - ./frontend:/app
     ports:
-    - "8003:3000"
+    - "3003:3000"
     command: >
           bash -c "cd ./app
           && npm install

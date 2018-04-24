@@ -2,22 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';//dispatch
 import * as actionTypes from '../../redux/actions/signupPageActions';
-
+import './notFoundPage.css';
 let propTypes = {
-	
 	// redux dispatchers
 };
 
 
-const Games = (props) => {
+const NotFoundPage = (props) => {
 	return (
-		<div className="page-home page">
-			<h1>games</h1>
+		<div className="page-404 page">
+			<div className="page-contents" >
+				<div className='message'>
+					<p className="text-144">:( </p>
+					<br />
+					<p className="text-36">404 - Page Not Found</p>
+				</div>
+			</div>
 		</div>
 	);
 };
 
-Games.propTypes = propTypes;
+NotFoundPage.propTypes = propTypes;
 
 const mapStateToProps = (state) => {
 	return {
@@ -34,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Games);
+)(NotFoundPage);

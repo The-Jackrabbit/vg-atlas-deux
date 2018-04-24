@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router';
 import store from './redux/store';
 
 // Pages
+import App from './App';
 import Home from './scenes/home/home';
 import Games from './scenes/games/games';
 import Signup from './scenes/signup/signup';
@@ -19,12 +20,7 @@ const history = createHistory();
 ReactDOM.render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
-			<Switch style={{minHeight: '100vh'}}>
-				<Route exact path="/" component={Home}/>
-				<Route path="/games/" component={Games} />
-				<Route path="/signup/" component={Signup}/>
-				<Route path="/signupConfirmation/" component={SignupConfirmation}/>
-			</Switch>
+			<App></App>
 		</ConnectedRouter>
 	</Provider>,
 	document.getElementById('root')
