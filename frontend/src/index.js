@@ -14,6 +14,8 @@ import Games from './scenes/games/games';
 import Signup from './scenes/signup/signup';
 import SignupConfirmation from './scenes/signupConfirmation/signupConfirmation';
 import './index.css';
+import './customElements.css';
+import './modifiers.css';
 
 const history = createHistory();
 

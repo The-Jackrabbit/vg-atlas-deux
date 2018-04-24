@@ -8,12 +8,11 @@
 	grid-template-rows:  min-content min-content min-content min-content min-content 1fr;
 	grid-template-areas: 
 	"logo"
-	"home"
 	"search"
 	"atlas"
 	"profile"
-	"."
-	"settings";
+	"settings"
+	".";
 }
 
 @media only screen and (max-width: 500px) {

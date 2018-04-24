@@ -10,25 +10,33 @@ import { MiniLogoIcon, HomeIcon, SettingsIcon, LocationIcon, PersonIcon, SearchI
 const Navbar = () => (
 	<div className="nav grid">
 		<div className="logo">
-			<MiniLogoIcon
-				height='28pt'
-				width= '28pt'>
-			</MiniLogoIcon>
-		</div>
-		<div className="home">
-			<HomeIcon></HomeIcon>
+			<Link to='/'>
+				<MiniLogoIcon
+					height='28pt'
+					width= '28pt'>
+				</MiniLogoIcon>
+			</Link>
 		</div>
 		<div className="search">
-			<SearchIcon></SearchIcon>
+			<Link to='/search/'>
+				<SearchIcon></SearchIcon>
+			</Link>
+			
 		</div>
 		<div className="atlas">
-			<LocationIcon></LocationIcon>
+			<Link to='/atlas/'>
+				<LocationIcon></LocationIcon>
+			</Link>
 		</div>
 		<div className="profile">
-			<PersonIcon></PersonIcon>
+			<Link to='/signup/'>
+				<PersonIcon></PersonIcon>
+			</Link>
 		</div>
 		<div className="settings">
-			<SettingsIcon></SettingsIcon>
+			<Link to='/settings/'>
+				<SettingsIcon></SettingsIcon>
+			</Link>
 		</div>
 	</div>
 );

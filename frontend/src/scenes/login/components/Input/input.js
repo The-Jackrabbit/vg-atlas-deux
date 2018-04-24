@@ -134,21 +134,18 @@ class Input extends Component {
 					{ 
 						this.state.focus && this.props.context === 'password' && 
 						<div className='password-tip-container'>
-							<PasswordTip
+							{/*<PasswordTip
 								reqs={this.props.reqs}
 								passwordProgress={this.props.passwordProgress}
 								isValid={this.props.isValid}
 								restrictedWords={this.props.restrictedWords}
 								noRestrictedWords={this.state.noRestrictedWords}
-							></PasswordTip>
+							></PasswordTip>*/}
 						</div>
 					}
 					{
 
-						(
-							(this.props.context !== 'password' && !this.props.isValid && this.state.touched) || 
-							(this.props.context === 'password' && !this.props.isValid && this.state.touched && !this.state.focus)
-						) &&
+						!this.props.isValid && this.state.touched && 
 						<ErrorMessage errorMessage={this.state.errorMessage}></ErrorMessage>
 					}
 				</div>

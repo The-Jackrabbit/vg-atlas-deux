@@ -13,9 +13,9 @@ const NotFoundPage = (props) => {
 		<div className="page-404 page">
 			<div className="page-contents" >
 				<div className='message'>
-					<p className="text-144">:( </p>
+					<p className="text-144" style={{color: '#bcbcbc'}}>:( </p>
 					<br />
-					<p className="text-36">404 - Page Not Found</p>
+					<p className="text-36" style={{color: '#bcbcbc'}}>404 - Page Not Found</p>
 				</div>
 			</div>
 		</div>

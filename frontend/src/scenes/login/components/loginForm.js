@@ -6,42 +6,33 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';//dispatch
-import states from './Select/data/states';
 
 import * as actionTypes from '../../../redux/actions/signupPageActions';
 
 let propTypes = {
-	statesData: PropTypes.array,
 	finishSignup: PropTypes.func.isRequired,
 	
 	// redux dispatchers
 	updateUsername: PropTypes.func.isRequired,
-	updateEmail: PropTypes.func.isRequired,
 	updatePassword: PropTypes.func.isRequired,
-	updatePasswordConfirm: PropTypes.func.isRequired,
-	username: PropTypes.string.isRequired,
 };
 
 let defaultProps = {
-	statesData: states,
+	
 };
 
-export class SignupForm extends Component {
+export class LoginForm extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			inputValidity: {
-				email: false,
 				username: false,
 				password: false,
-				passwordConfirm: false,
 			},
 			inputValues: {
-				email: '',
 				username: '',
 				password: '',
-				passwordConfirm: '',
 			},
 			passwordProgress: {
 				numberOfCapitals: false,
@@ -63,32 +54,16 @@ export class SignupForm extends Component {
 		this.handleFormInput = this.handleFormInput.bind(this);
 		this.processSubmit = this.processSubmit.bind(this);
 
-		this.validateEmail = this.validateEmail.bind(this);
 		this.validateUsername = this.validateUsername.bind(this);
 		this.validatePassword = this.validatePassword.bind(this);
-		this.validatePasswordConfirm = this.validatePasswordConfirm.bind(this);
-		this.validateState = this.validateState.bind(this);
 	}
 
 	handleFormInput(event, context) {
 
-		this.props.updateUsername(event.target.value);
 		this.setState({
 			inputValues: {
 				...this.state.inputValues,
 				[context]: event.target.value,
-			}
-		});
-	}
-	
-	validateEmail(event) {
-		// regex from http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
-		let re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		let isValid =  re.test(event.target.value)&&(event.target.value.length > 0);
-		this.setState({
-			inputValidity: {
-				...this.state.inputValidity,
-				email: isValid
 			}
 		});
 	}
@@ -133,48 +108,11 @@ export class SignupForm extends Component {
 		const andAllReducer = (previous, currentTest) => previous&&currentTest;
 		isValid = Object.values(tests).reduce(andAllReducer, isValid);
 
-		let passwordConfirmNotEmpty = this.state.inputValues.passwordConfirm.length > 0;
 		let passwordsMatch = this.state.inputValues.passwordConfirm === event.target.value;
 		this.setState({
 			inputValidity: {
 				...this.state.inputValidity,
 				password: isValid,
-				passwordConfirm:  passwordConfirmNotEmpty&&passwordsMatch
-			}
-		});
-	}
-
-	validatePasswordConfirm(event) {
-		let passwordConfirmNotEmpty = event.target.value.length > 0;
-		let passwordsMatch = event.target.value === this.state.inputValues.password;
-		this.setState({
-			inputValidity: {
-				...this.state.inputValidity,
-				passwordConfirm: passwordConfirmNotEmpty&&passwordsMatch
-			}
-		});
-	}
-
-	validateState(event) {
-
-		let selectedValue = event.target.value.value;
-		let isValid = false;
-		console.log({
-			func: 'validateState',
-			event: event,
-			'event.target.value': event.target.value,
-			'this.props.statesData.': this.props.statesData,
-			selectedValue: selectedValue,
-		});
-		this.props.statesData.forEach(({value}) => {
-			if (value === selectedValue) {
-				isValid = true;
-			}
-		});
-		this.setState({
-			inputValidity: {
-				...this.state.inputValidity,
-				state: isValid,
 			}
 		});
 	}
@@ -183,9 +121,7 @@ export class SignupForm extends Component {
 		const andAllReducer = (previous, currentTest) => previous&&currentTest;
 		let isSubmittable = Object.values(this.state.inputValidity).reduce(andAllReducer);
 		if (isSubmittable) {
-			this.props.updateUsername(this.state.inputValues.username);
-			this.props.updateEmail(this.state.inputValues.email);
-			const url = 'http://localhost:3002/signup';
+			const url = 'http://localhost:3002/login';
 			fetch(url, {
 				body: JSON.stringify(this.state.inputValues), // must match 'Content-Type' header
 				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -200,10 +136,10 @@ export class SignupForm extends Component {
 			}).then((response) => {
 				return response.json();
 			}).then((data) => {
-				
-				this.props.finishSignup();
-
-
+				if (data.status === 'Passwords match!') {
+					this.props.updateUsername(data.resp.username);
+				}
+				this.props.finishSignup(data);
 			});
 
 		} else {
@@ -224,15 +160,6 @@ export class SignupForm extends Component {
 					onChange={this.handleFormInput}>
 				</Input>
 				<Input 
-					context='email'
-					name='Email address'
-					invalidText='Email is invalid'
-					emptyText={'Email can\'t be empty'}
-					validator={this.validateEmail}
-					isValid={this.state.inputValidity.email}
-					onChange={this.handleFormInput}>
-				</Input>
-				<Input 
 					inputType='password'
 					context='password'
 					name='Password'
@@ -245,32 +172,22 @@ export class SignupForm extends Component {
 					passwordProgress={this.state.passwordProgress}
 					restrictedWords={this.state.passwordReqs.restrictedWords}>
 				</Input>
-				<Input 
-					inputType='password'
-					context='passwordConfirm'
-					name='Confirm Password'
-					invalidText={'Passwords don\'t match'}
-					emptyText='Please confirm your password'
-					isValid={this.state.inputValidity.passwordConfirm}
-					validator={this.validatePasswordConfirm}
-					onChange={this.handleFormInput}>
-				</Input>
 				<Submit 
-					value='CREATE ACCOUNT'
+					value='LOGIN'
 					onClick={this.processSubmit}>
 				</Submit>
 				<div className='grid login-redirect standard-size'>
 					<div className="question">
 						<p style={{
 							color: '#BCBCBC'
-						}}>Have an account?</p>
+						}}>{'Don\'t have an account?'}</p>
 					</div>
 					<div className="btn">
-						<button className="btn-red-light" 
+						<button className="btn-blue-light" 
 							style={{
 								width: '100pt',
 							}}>
-							<Link to="/login/" style={{display: 'block', height: '100%'}}>Login</Link>
+							<Link to="/signup/" style={{display: 'block', height: '100%'}}>Signup</Link>
 						</button>
 					</div>
 				</div>
@@ -280,8 +197,8 @@ export class SignupForm extends Component {
 	}
 }
 
-SignupForm.propTypes = propTypes;
-SignupForm.defaultProps = defaultProps;
+LoginForm.propTypes = propTypes;
+LoginForm.defaultProps = defaultProps;
 
 const mapStateToProps = (state) => {
 	return {
@@ -298,16 +215,8 @@ const mapDispatchToProps = (dispatch) => {
 				payload: input,
 			});
 		},
-		updateEmail: (input) => dispatch({
-			type: actionTypes.UPDATE_EMAIL,
-			payload: input,
-		}),
 		updatePassword: (input) => dispatch({
 			type: actionTypes.UPDATE_PASSWORD,
-			payload: input,
-		}),
-		updatePasswordConfirm: (input) => dispatch({
-			type: actionTypes.UPDATE_CONFIRM_PASSWORD,
 			payload: input,
 		}),
 	};
@@ -315,4 +224,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(SignupForm);
+)(LoginForm);

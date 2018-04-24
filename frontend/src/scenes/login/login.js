@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
-import SignupForm from './components/signupForm';
-
-import './signup.css';
+import { LoginForm } from './components/loginForm';
+import './login.css';
 
 const propTypes = {
 	
@@ -24,8 +23,15 @@ class Signup extends Component {
 			props: this.props,
 		});
 	}
-	finishSignup() {
-		this.setState({signupCompleted: true});
+	finishSignup(result) {
+		console.log({
+			result: result,
+		});
+		this.setState({
+			signupCompleted: result.status === 'Passwords match!'
+		});
+		
+		// 
 	}
 
 	render() {
@@ -34,13 +40,13 @@ class Signup extends Component {
 				<div className="page-signup page">
 					<div className="page-contents">
 						<div className="signup-form-container standard-size">
-							<SignupForm className="signup-form" finishSignup={this.finishSignup}></SignupForm>
+							<LoginForm finishSignup={this.finishSignup}></LoginForm>
 						</div>
 					</div>
 				</div>
 			);
 		}
-		return(<Redirect to="/signupConfirmation"/>);
+		return(<Redirect to="/"/>);
 	}
 }
 

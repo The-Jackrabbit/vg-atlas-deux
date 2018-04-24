@@ -6,6 +6,7 @@ import Home from './scenes/home/home';
 import Games from './scenes/games/games';
 import Library from './scenes/library/library';
 import Signup from './scenes/signup/signup';
+import Login from './scenes/login/login';
 import NotFoundPage from './scenes/notFound/notFoundPage';
 import SignupConfirmation from './scenes/signupConfirmation/signupConfirmation';
 
@@ -22,6 +23,7 @@ const App = () => {
 					<Route exact path="/" component={Home}/>
 					<Route exact path="/games/" component={Games} />
 					<Route exact path="/library/" component={Library} />
+					<Route exact path="/login/" component={Login}/>
 					<Route exact path="/signup/" component={Signup}/>
 					<Route exact path="/signupConfirmation/" component={SignupConfirmation}/>
 					<Route path="/" component={NotFoundPage} />

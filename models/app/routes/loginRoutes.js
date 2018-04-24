@@ -13,7 +13,6 @@ module.exports = function(app, db) {
 			username: req.body.username, 
 			password: req.body.password 
 		};
-
 		// Retrieve Matching User
 		const findingMatchingUser = new Promise(function(resolve, reject) {
 			db.collection(collection).findOne({username : providedUserInfo.username }, (err, result) => {
@@ -35,7 +34,7 @@ module.exports = function(app, db) {
 			const { userInfo } = response;
 
 			const storedPassword = userInfo.password;
-
+			
 			bcrypt.compare(providedUserInfo.password, storedPassword, function(err, bcryptResponse) {
 				if(bcryptResponse) {
 					res.send({status: 'Passwords match!', resp: userInfo});

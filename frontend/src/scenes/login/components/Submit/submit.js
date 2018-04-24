@@ -15,7 +15,7 @@ const Submit = ({value, onClick}) => {
 	return (
 		<div className='input grid form-input'>
 			<button 
-				className='btn-red-dark standard-size' 
+				className='btn-blue-dark standard-size' 
 				onClick={onClick}>
 				{value}
 			</button>

@@ -6,8 +6,12 @@
 	grid-template-areas:
 	". signupForm .";
 }
-.signup-form {
+.page-signup .signup-form-container {
 	grid-area: signupForm;
-	width: 340pt;
+	max-width: 350pt;
+	width: calc(200pt + 6vw);
 	margin: auto;
+}
+.page-signup .login-redirect {
+	grid-area: loginRedirect;
 }
