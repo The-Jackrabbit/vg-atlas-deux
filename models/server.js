@@ -20,6 +20,14 @@ MongoClient.connect(dbConfig.url, (err, database) => {
 	}
 
 	const db = database.db('vg-atlas');
+
+	db.collection('test', function(err, collection) {});
+
+	db.collection('test', {w:1}, function(err, collection) {});
+
+	db.createCollection('test', function(err, collection) {});
+
+	db.createCollection('test', {w:1}, function(err, collection) {});
 	
 	routes(app, db);
 

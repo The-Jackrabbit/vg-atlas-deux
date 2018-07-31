@@ -1,0 +1,16 @@
+.page-search .page-contents {
+	display: grid;
+	padding: 12pt;
+	grid-template-rows: min-content 1fr;
+	grid-template-areas:
+	'search'
+	'results';
+}
+.search-container {
+	padding: 12pt;
+	grid-area: search;
+}
+.results-container {
+	padding: 12pt;
+	grid-area: results;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
+import lightLogo from '../../assets/logo-full-light.svg';
 
 const Home = () => {
 	return (
 		<div className="page-home page">
-			home
+			<img src={lightLogo}/>
 		</div>
 	);
 };

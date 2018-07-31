@@ -1,10 +1,19 @@
 version: "2"
 services:
+  db:
+    image: mongo
+    volumes:
+      - ./db:/data/db
+    ports:
+      - "3004:27017"
+  
   models:
     image: "node:8"
     user: "node"
     environment:
       - NODE_ENV=production
+    links:
+      - db:db
     volumes:
       - ./models:/app
     ports:

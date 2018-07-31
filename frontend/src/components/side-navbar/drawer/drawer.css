@@ -1,0 +1,26 @@
+.drawer {
+	grid-template-areas: 'main minify';
+	grid-template-columns: 1fr min-content;
+
+
+	background-color: #343434;
+	height: 100vh;
+}
+.main {
+	grid-area: main;
+	-webkit-transition: width 0.5s; /* Safari */
+   transition: width 0.5s;
+}
+.minify {
+	grid-area: minify;
+	cursor: pointer;
+	padding: 2pt;
+	margin: auto;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	height: 100vh;
+}
+.minify:hover {
+	background-color: #4C4C4C;
+}

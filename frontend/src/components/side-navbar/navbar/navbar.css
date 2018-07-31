@@ -1,0 +1,60 @@
+.navbar {
+	height: 100vh;
+	width: 70px;
+	position: fixed;
+	top:0;
+	left:0;
+	background-color: #4C4C4C;
+	grid-template-rows:  min-content min-content min-content min-content min-content 1fr;
+	grid-template-areas: 
+	"logo"
+	"search"
+	"atlas"
+	"profile"
+	"settings"
+	".";
+}
+
+@media only screen and (max-width: 500px) {
+	.navbar {
+		height: 40pt;
+		width: 100vw;
+		position: fixed;
+		top: initial;
+		bottom:0;
+		left:0;
+		
+		grid-template-areas: 
+		"home search atlas profile settings";
+	}
+}
+
+.home, .search, .settings, .atlas, .profile, .logo  {
+	margin: auto;
+	padding: 6pt 6pt;
+	cursor: pointer;
+}
+.logo  {
+	padding: 30pt 6pt;
+	cursor: pointer;
+}
+
+.home {
+	grid-area: home;
+}
+.logo {
+	grid-area: logo;
+	padding-bottom: 18pt;
+}
+.search {
+	grid-area: search;
+}
+.settings {
+	grid-area: settings;
+}
+.atlas {
+	grid-area: atlas;
+}
+.profile {
+	grid-area: profile;
+}

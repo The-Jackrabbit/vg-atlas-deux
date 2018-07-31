@@ -5,21 +5,23 @@ body {
 }
 .viewport-container {
 	display: grid;
-	grid-template-areas: 'navContainer bodyContainer';
+	grid-template-areas: 
+	'navContainer headerContainer'
+	'navContainer bodyContainer';
 	grid-template-columns: min-content 1fr;
-
 }
-.navbar-container {
+.sidebar-container {
 	grid-area: navContainer;
-	background-color: #141414;
-	margin: atuo;
-	width: 60px;
+	background-color: #343434;
 }
 .body-container {
 	grid-area: bodyContainer;
 }
+.header-container {
+	grid-area: headerContainer;
+}
 #root {
-	background-color: #242424;
+	background-color: #141414;
 }
 .page-contents {
 	min-height: calc(100vh - 50px);
@@ -61,6 +63,7 @@ button {
 }
 input {
 	border: 1pt solid #DEDEE5;
+	color: #141414 !important;
 	border-radius: 2pt;
 	height: 24pt;
 	font-size: 11pt;
@@ -69,6 +72,10 @@ input {
 }
 input:focus, select:focus {
 	outline-width: 0;
+	
+}
+input:focus {
+	cursor: text;
 }
 input::placeholder {
 	color: #9B9BA0;

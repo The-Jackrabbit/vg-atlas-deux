@@ -1,0 +1,17 @@
+.sidebar {
+	height: 100vh;
+	background-color: #4C4C4C;
+	grid-template-areas: 'nav drawer';
+}
+.sidebar .navbar-container,
+.sidebar .drawer-container {
+	height: 100vh;
+}
+.sidebar .navbar-container {
+	grid-area: nav;
+	width:70px;
+	background-color: #4C4C4C;
+}
+.sidebar .drawer-container {
+	grid-area: drawer;
+}
