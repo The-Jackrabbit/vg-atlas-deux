@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // Components
-import ProtectedRoute from './auth/ProtectedRoute';
+// import ProtectedRoute from './auth/ProtectedRoute';
 
 // Pages
 import Home from '../scenes/home/home';
@@ -28,7 +28,7 @@ export default class Router extends Component {
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				<Route exact path="/games/" component={Games} />
-				<ProtectedRoute exact path="/library/" component={Library} />
+				<Route exact path="/library/" component={Library} />
 				<Route exact path="/search/" component={Search}/>
 				<Route exact path="/login/" component={Login}/>
 				<Route exact path="/signup/" component={Signup}/>
